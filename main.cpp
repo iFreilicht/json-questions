@@ -37,13 +37,13 @@ int main()
       {"value", 42.99}
     }}
   };
-  
-  const auto & object = getObject(valueAt(j2, "object"));
+
+  auto object = getObject(valueAt(j2, "object"));
 
   std::cout << "object" << '\n';
   std::cout << object << '\n';
 
-  const auto & nestedObject = getString(valueAt(object, "currency"));
+  auto nestedObject = getString(valueAt(object, "currency"));
 
   std::cout << "nestedObject" << '\n';
   // This works
@@ -51,12 +51,12 @@ int main()
 
   // ------------------------------------------------------------------
 
-  const auto & objectRef = getObjectRef(valueAt(j2, "object"));
+  auto & objectRef = getObjectRef(valueAt(j2, "object"));
 
   std::cout << "objectRef" << '\n';
   std::cout << objectRef << '\n';
 
-  const auto & nestedObjectRef = getStringRef(valueAt(objectRef, "currency"));
+  auto & nestedObjectRef  = getStringRef(valueAt(objectRef, "currency"));
 
   std::cout << "nestedObjectRef" << '\n';
   // Here `nestedObject` seems to be empty.
