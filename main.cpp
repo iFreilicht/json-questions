@@ -7,6 +7,10 @@ const nlohmann::json & valueAt(const nlohmann::json & map, const std::string & k
 {
   return map[key];
 }
+const nlohmann::json & valueAt(const nlohmann::json::object_t & map, const std::string & key)
+{
+  return map.at(key);
+}
 
 const nlohmann::json::object_t & getObjectRef(const nlohmann::json & obj)
 {
