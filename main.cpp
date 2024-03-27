@@ -1,6 +1,7 @@
 #include <iostream>
 #include <map>
 #include <string>
+#define JSON_USE_IMPLICIT_CONVERSIONS 0
 #include "include/nlohmann/json.hpp"
 
 const nlohmann::json & valueAt(const nlohmann::json & map, const std::string & key)
@@ -45,7 +46,7 @@ int main()
   auto object = getObject(valueAt(j2, "object"));
 
   std::cout << "object" << '\n';
-  std::cout << object << '\n';
+  std::cout << nlohmann::json(object) << '\n';
 
   auto nestedObject = getString(valueAt(object, "currency"));
 
@@ -58,7 +59,7 @@ int main()
   auto & objectRef = getObjectRef(valueAt(j2, "object"));
 
   std::cout << "objectRef" << '\n';
-  std::cout << objectRef << '\n';
+  std::cout << nlohmann::json(objectRef) << '\n';
 
   auto & nestedObjectRef  = getStringRef(valueAt(objectRef, "currency"));
 
